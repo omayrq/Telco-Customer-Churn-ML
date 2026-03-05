@@ -61,3 +61,73 @@ Local testing vs. prod paths
 
 - Cause: MLflow artifact URIs differ locally vs. in container.
 - Fixes: For local dev, load via direct ./mlruns/.../artifacts/model; in prod, container loads the packaged model path used at build time.
+
+
+# step 01
+
+git clone the repo
+
+# step 02
+
+download csv file from below kaggle link,
+https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download
+
+# step 03
+
+make new inside the clone folder 
+
+named -> data -> raw, processed, external
+
+Put the downloaded csv file inside the raw folder
+
+# Step 04 
+
+make dir
+
+mkdir -p \
+> data/raw data/processed data/external \
+> notebooks \
+> src/{data, features, models,utils} \
+> app\ configs \ scripts\
+> tests\
+> .github/workflows \    
+> docker \
+> great_expectations \
+> mlruns \ 
+> artifacts
+
+run this console 
+
+# step 05:
+
+run below 
+
+cat <<EOF > requirements.txt
+pandas
+numpy
+scikit-learn
+mlflow
+fastapi
+uvicorn
+pydantic
+python-dotenv
+joblib
+great-expectations
+pytest
+EOF
+
+command for git bash console
+
+in console to make requirements.txt file
+
+# step 06 
+
+create python environment 
+run below commands,
+
+python3 -m venv .venv 
+source .venv/Scripts/activate
+pip install --upgrade pip
+uv pip install -r requirements.txt
+
+
